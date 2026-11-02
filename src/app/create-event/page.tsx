@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { toast } from "react-toastify";
+import { authClient } from "@/lib/auth-client";
 
 const EVENT_TYPES = [
   "Donation",
@@ -21,6 +22,9 @@ const EVENT_TYPES = [
 
 const CreateEventPage = () => {
   const router = useRouter();
+
+  const { data: session } = authClient.useSession();
+const user = session?.user;
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -64,6 +68,7 @@ const CreateEventPage = () => {
         },
         body: JSON.stringify({
           ...event,
+           creatorEmail: user?.email,
           eventDate: new Date(event.eventDate).toISOString(),
         }),
       });

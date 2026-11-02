@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Event } from "@/lib/type";
+import Image from "next/image";
 
 
 const UpcomingEventsPage = () => {
@@ -59,7 +60,7 @@ const UpcomingEventsPage = () => {
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-16 dark:bg-slate-950">
       <div className="mx-auto max-w-7xl">
-        {/* Page Heading */}
+        
         <div className="mb-10 text-center">
           <h1 className="text-3xl font-bold text-slate-900 dark:text-white md:text-4xl">
             Upcoming Events
@@ -81,8 +82,10 @@ const UpcomingEventsPage = () => {
                 key={event._id}
                 className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
               >
-                {/* Thumbnail */}
-                <img
+               
+                <Image
+                    width={400}
+                    height={200}
                   src={event.thumbnailUrl}
                   alt={event.title}
                   className="h-52 w-full object-cover"
