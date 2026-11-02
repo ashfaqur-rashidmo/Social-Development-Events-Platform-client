@@ -7,8 +7,7 @@ import { useRouter, usePathname } from "next/navigation";
 import {
   Bell,
   HandHeart,
-  Moon,
-  Sun,
+  
   Plus,
   PlusCircle,
   CalendarDays,
@@ -17,45 +16,45 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-// import { authClient } from "@/lib/auth-client";
-// import { Avatar, Popover } from "@heroui/react";
-// import { toast } from "react-toastify";
+import { authClient } from "@/lib/auth-client";
+import { Avatar, Popover } from "@heroui/react";
+import { toast } from "react-toastify";
 // import { useTheme } from "next-themes";
 
 const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-//   const { theme, setTheme } = useTheme();
+  // const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-//   useEffect(() => {
-//     setMounted(true);
-//   }, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+  // const toggleTheme = () => {
+  //   setTheme(theme === "dark" ? "light" : "dark");
+  // };
+
+  const { data: session, isPending } = authClient.useSession();
+  const user = session?.user;
+
+  const handleSignOut = async () => {
+    try {
+      const { error } = await authClient.signOut();
+
+      if (error) {
+        toast.error(error.message || "Logout failed. Please try again.");
+        return;
+      }
+
+      toast.success("Logged out successfully!");
+      router.replace("/login");
+    } catch (error) {
+      console.error("Logout error:", error);
+      toast.error("Something went wrong. Please try again.");
+    }
   };
-
-//   const { data: session, isPending } = authClient.useSession();
-//   const user = session?.user;
-
-//   const handleSignOut = async () => {
-//     try {
-//       const { error } = await authClient.signOut();
-
-//       if (error) {
-//         toast.error(error.message || "Logout failed. Please try again.");
-//         return;
-//       }
-
-//       toast.success("Logged out successfully!");
-//       router.replace("/login");
-//     } catch (error) {
-//       console.error("Logout error:", error);
-//       toast.error("Something went wrong. Please try again.");
-//     }
-//   };
 
   const navLinks = [
     { name: "Upcoming Events", href: "/upcoming-events" },
@@ -111,9 +110,9 @@ const Navbar = () => {
         <div className="flex items-center gap-2 sm:gap-3">
 
           {/* Theme Toggle */}
-          <button
+          {/* <button
             type="button"
-            onClick={toggleTheme}
+            // onClick={toggleTheme}
             aria-label={
               mounted
                 ? `Switch to ${theme === "dark" ? "light" : "dark"} mode`
@@ -131,7 +130,7 @@ const Navbar = () => {
             ) : (
               <Moon size={19} />
             )}
-          </button>
+          </button> */}
 
           {/* Notifications */}
           <button
@@ -149,7 +148,7 @@ const Navbar = () => {
           ) : user ? (
             <>
               {/* User Profile Dropdown */}
-              {/* <Popover>
+              <Popover>
                 <Popover.Trigger>
                   <button
                     type="button"
@@ -238,7 +237,7 @@ const Navbar = () => {
                     </div>
                   </Popover.Dialog>
                 </Popover.Content>
-              </Popover> */}
+              </Popover>
 
               <Link
                 href="/create-event"
@@ -257,12 +256,7 @@ const Navbar = () => {
                 Log In
               </Link>
 
-              <Link
-                href="/signup"
-                className="hidden rounded-lg border border-emerald-700 px-4 py-2.5 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-50 sm:block"
-              >
-                Sign Up
-              </Link>
+             
 
               <Link
                 href="/login"
