@@ -6,6 +6,8 @@ import Link from "next/link";
 import type { Event } from "@/lib/type";
 import { Button } from "@heroui/react";
 import  EditEventsDetails  from "./EditEventsDetails";
+import { toast } from "react-toastify";
+import DeletingUserEvents from "./DeletingUserEvents";
 
 interface MyEventsCardProps {
   events: Event[];
@@ -78,7 +80,7 @@ const MyEventsCard = ({ events }: MyEventsCardProps) => {
 
               <EditEventsDetails event={event}/>
 
-              <Button>Delete</Button>
+              <DeletingUserEvents event={event}/>
             </div>
           </div>
         </div>
