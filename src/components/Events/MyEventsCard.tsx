@@ -4,10 +4,14 @@ import Image from "next/image";
 import { CalendarDays, MapPin, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import type { Event } from "@/lib/type";
+import { Button } from "@heroui/react";
+import  EditEventsDetails  from "./EditEventsDetails";
 
 interface MyEventsCardProps {
   events: Event[];
 }
+
+
 
 const MyEventsCard = ({ events }: MyEventsCardProps) => {
   return (
@@ -71,6 +75,10 @@ const MyEventsCard = ({ events }: MyEventsCardProps) => {
                 View Event
                 <ArrowUpRight size={16} />
               </Link>
+
+              <EditEventsDetails event={event}/>
+
+              <Button>Delete</Button>
             </div>
           </div>
         </div>
