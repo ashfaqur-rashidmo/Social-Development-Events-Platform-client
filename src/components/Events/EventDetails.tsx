@@ -28,8 +28,49 @@ const EventDetails = ({ event }: { event: Event }) => {
   const user = session?.user;
 
 
+  const handleJoinEvent = async () => {
+    if (!user) {
+      toast.error("Please log in to join this event.");
+      return;
+    }
 
-   
+    if (joining) return;
+
+    setJoining(true);
+
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_URL}/joined-events`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            eventId: event._id,
+            userEmail: user.email,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to join event");
+      }
+
+      toast.success("You have successfully joined this event!");
+    } catch (error) {
+      console.error("Error joining event:", error);
+
+      toast.error(
+        error instanceof Error ? error.message : "Something went wrong"
+      );
+    } finally {
+      setJoining(false);
+    }
+  };
+
 
   return (
     <div className="mx-auto max-w-6xl">
@@ -174,7 +215,7 @@ const EventDetails = ({ event }: { event: Event }) => {
             </div>
 
             <button
-            //   onClick={handleJoinEvent}
+              onClick={handleJoinEvent}
               disabled={joining || isPending}
               className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 py-3.5 font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-60"
             >
