@@ -42,6 +42,7 @@ const LogInPage = () => {
 } catch (err) {
     setError("Something went wrong. Please try again.");
     toast.error("Something went wrong. Please try again.");
+    console.error(err);
 
 } finally {
     setLoading(false);
@@ -86,13 +87,14 @@ const LogInPage = () => {
                             Password
                         </label>
 
-                        <input
-                            id="password"
-                            type="password"
-                            name="password"
-                            required
-                            className="mt-1 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm"
-                        />
+                       <input
+    id="password"
+    type="password"
+    name="password"
+    required
+    minLength={6}
+    className="mt-1 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm"
+/>
                     </div>
 
                     {error && (

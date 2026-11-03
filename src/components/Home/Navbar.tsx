@@ -7,7 +7,6 @@ import { useRouter, usePathname } from "next/navigation";
 import {
   Bell,
   HandHeart,
-  
   Plus,
   PlusCircle,
   CalendarDays,
@@ -19,22 +18,22 @@ import {
 import { authClient } from "@/lib/auth-client";
 import { Avatar, Popover } from "@heroui/react";
 import { toast } from "react-toastify";
-// import { useTheme } from "next-themes";
+import { Sun, Moon, Check } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  // const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+useEffect(() => {
+  setMounted(true);
+}, []);
 
-  // const toggleTheme = () => {
-  //   setTheme(theme === "dark" ? "light" : "dark");
-  // };
+const { theme, setTheme } = useTheme();
+
+ 
 
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
@@ -62,8 +61,8 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur-md">
-      <nav className="mx-auto flex h-14 max-w-8xl items-center justify-between px-4 md:px-5">
+    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 text-slate-900 shadow-sm backdrop-blur-md dark:border-slate-700 dark:bg-slate-950/95 dark:text-white">
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
         {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center gap-2">
@@ -109,29 +108,59 @@ const Navbar = () => {
         {/* Right Actions */}
         <div className="flex items-center gap-2 sm:gap-3">
 
-          {/* Theme Toggle */}
-          {/* <button
-            type="button"
-            // onClick={toggleTheme}
-            aria-label={
-              mounted
-                ? `Switch to ${theme === "dark" ? "light" : "dark"} mode`
-                : "Toggle theme"
-            }
-            title={
-              mounted
-                ? `Switch to ${theme === "dark" ? "light" : "dark"} mode`
-                : "Toggle theme"
-            }
-            className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-emerald-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-emerald-400"
-          >
-            {mounted && theme === "dark" ? (
-              <Sun size={19} />
-            ) : (
-              <Moon size={19} />
-            )}
-          </button> */}
+          {/* Theme Selector */}
+<Popover>
+  <Popover.Trigger>
+    <button
+      type="button"
+      aria-label="Change theme"
+      title="Change theme"
+      className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 transition hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+    >
+      {mounted && theme === "dark" ? (
+        <Moon size={19} />
+      ) : (
+        <Sun size={19} />
+      )}
+    </button>
+  </Popover.Trigger>
 
+  <Popover.Content className="w-44" placement="bottom end">
+    <Popover.Dialog>
+      <div className="p-2">
+        <p className="px-2 pb-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
+          Appearance
+        </p>
+
+        <button
+          type="button"
+          onClick={() => setTheme("light")}
+          className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
+        >
+          <Sun size={17} />
+          Light
+          {mounted && theme === "light" && (
+            <Check size={16} className="ml-auto text-emerald-600" />
+          )}
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setTheme("dark")}
+          className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
+        >
+          <Moon size={17} />
+          Dark
+          {mounted && theme === "dark" && (
+            <Check size={16} className="ml-auto text-emerald-600" />
+          )}
+        </button>
+      </div>
+    </Popover.Dialog>
+  </Popover.Content>
+</Popover>
+
+         
           {/* Notifications */}
           <button
             type="button"

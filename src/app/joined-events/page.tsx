@@ -36,7 +36,12 @@ const JoinedEvents = () => {
         }
 
         const data = await response.json();
-        setEvents(data);
+        const sortedEvents = data.sort(
+        (a: Event, b: Event) =>
+        new Date(a.eventDate).getTime() - new Date(b.eventDate).getTime()
+);
+
+setEvents(sortedEvents);
       } catch (error) {
         console.error(error);
       } finally {

@@ -19,8 +19,8 @@ const SignUpPage = () => {
 
     const formData = new FormData(e.currentTarget);
 
-    const name = formData.get("name") as string;
-    const email = formData.get("email") as string;
+   const name = (formData.get("name") as string).trim();
+   const email = (formData.get("email") as string).trim();
     const image = formData.get("photoUrl") as string;
     const password = formData.get("password") as string;
 
