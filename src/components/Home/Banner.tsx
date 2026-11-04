@@ -6,6 +6,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import React from "react";
 
 const Banner = () => {
@@ -77,10 +78,13 @@ const Banner = () => {
           {/* Image Container */}
           <div className="relative w-full max-w-[28rem] mx-auto aspect-[4/3] lg:aspect-[14/15] overflow-hidden rounded-2xl shadow-xl">
 
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=85"
               alt="Volunteers distributing winter clothes to the community"
-              className="absolute inset-0 w-full h-full object-cover object-center"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 448px"
+              className="object-cover object-center"
             />
 
           </div>

@@ -25,6 +25,13 @@ const EVENT_TYPES = [
   "Plantation"
 ];
 
+// Browser-local "today" for the date input's min floor (submit handler re-validates future dates)
+const TODAY_MIN = new Date(
+  Date.now() - new Date().getTimezoneOffset() * 60000
+)
+  .toISOString()
+  .split("T")[0];
+
 const CreateEventPage = () => {
   const router = useRouter();
 
@@ -101,15 +108,15 @@ const user = session?.user;
       <div className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-10">
 
         <div className="mb-8">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-700">
+          <p className="text-xs font-bold uppercase tracking-widest text-teal-700">
             New Drive
           </p>
 
-          <h1 className="mt-2 text-2xl font-bold text-slate-900 dark:text-white">
+          <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             Create Event
           </h1>
 
-          <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+          <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
             Only future dates are accepted.
           </p>
         </div>
@@ -202,9 +209,7 @@ const user = session?.user;
               type="date"
               value={event.eventDate}
               onChange={handleChange}
-              min={new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
-                .toISOString()
-                .split("T")[0]}
+              min={TODAY_MIN}
               required
               className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
             />
@@ -230,7 +235,7 @@ const user = session?.user;
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full rounded-lg bg-emerald-700 px-4 py-3 text-sm font-semibold text-white transition hover:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-60"
+            className="w-full rounded-lg bg-emerald-700 px-6 py-3.5 font-semibold text-white shadow-sm transition duration-200 hover:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-60"
           >
            <ButtonLoading isLoading={isLoading} loadingText="Creating Event...">
               Create Event

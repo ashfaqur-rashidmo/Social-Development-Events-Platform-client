@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { CalendarDays, MapPin } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import type { Event } from "@/lib/type";
 import { getTokenFromClient } from "@/lib/getTokenFromClient";
@@ -18,7 +19,6 @@ const JoinedEvents = () => {
     if (isPending) return;
 
     if (!session?.user?.email) {
-      setEvents([]);
       return;
     }
 
@@ -82,14 +82,14 @@ const JoinedEvents = () => {
   if (events.length === 0) {
     return (
       <p className="py-10 text-center">
-        You haven't joined any events yet.
+        You haven&apos;t joined any events yet.
       </p>
     );
   }
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-12">
-      <h1 className="mb-8 text-3xl font-bold">
+    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <h1 className="mb-8 text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
         My Joined Events
       </h1>
 
@@ -97,36 +97,42 @@ const JoinedEvents = () => {
         {events.map((event) => (
           <div
             key={event._id}
-            className="overflow-hidden rounded-xl border bg-white shadow-sm"
+            className="flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900"
           >
             <Image
               src={event.thumbnailUrl}
               alt={event.title}
-              width={500}
-              height={300}
+              width={400}
+              height={208}
               className="h-52 w-full object-cover"
             />
 
-            <div className="p-5">
+            <div className="flex flex-1 flex-col p-5">
               <p className="mb-2 text-sm text-emerald-600">
                 {event.eventType}
               </p>
 
-              <h2 className="mb-2 text-xl font-semibold">
+              <h2 className="mb-2 text-xl font-bold text-slate-900 dark:text-white">
                 {event.title}
               </h2>
 
-              <p className="mb-2 text-sm text-gray-600">
+              <p className="mb-2 flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400">
+                <MapPin size={16} className="shrink-0 text-emerald-600" />
                 {event.location}
               </p>
 
-              <p className="mb-4 text-sm text-gray-600">
-                {new Date(event.eventDate).toLocaleDateString()}
+              <p className="mb-4 flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400">
+                <CalendarDays size={16} className="shrink-0 text-emerald-600" />
+                {new Date(event.eventDate).toLocaleDateString("en-GB", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
               </p>
 
               <Link
                 href={`/events/${event._id}`}
-                className="inline-block rounded-lg bg-emerald-600 px-4 py-2 text-white hover:bg-emerald-700"
+                className="mt-auto block w-full rounded-lg bg-emerald-700 px-6 py-3.5 text-center font-semibold text-white shadow-sm transition duration-200 hover:bg-emerald-800"
               >
                 View Details
               </Link>

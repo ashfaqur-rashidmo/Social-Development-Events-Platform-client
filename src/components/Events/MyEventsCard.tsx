@@ -20,7 +20,7 @@ const MyEventsCard = ({ events }: MyEventsCardProps) => {
       {events.map((event) => (
         <div
           key={event._id}
-          className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+          className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
         >
           {/* Event Image */}
           <div className="relative h-52 overflow-hidden">
@@ -40,7 +40,7 @@ const MyEventsCard = ({ events }: MyEventsCardProps) => {
           </div>
 
           {/* Event Information */}
-          <div className="p-5">
+          <div className="flex flex-1 flex-col p-5">
             <h2 className="line-clamp-1 text-xl font-bold text-slate-900 transition-colors group-hover:text-emerald-700 dark:text-white dark:group-hover:text-emerald-400">
               {event.title}
             </h2>
@@ -68,10 +68,10 @@ const MyEventsCard = ({ events }: MyEventsCardProps) => {
             </div>
 
             {/* View Event */}
-            <div className="mt-5">
+            <div className="mt-auto pt-5">
               <Link
                 href={`/events/${event._id}`}
-                className="flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-800"
+                className="flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-700 px-6 py-3.5 font-semibold text-white shadow-sm transition duration-200 hover:bg-emerald-800"
               >
                 View Event
                 <ArrowUpRight size={16} />

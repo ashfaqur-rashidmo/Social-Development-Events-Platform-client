@@ -59,11 +59,11 @@ const LogInPage = () => {
     return (
         <main className="flex-1 flex items-center justify-center px-4 py-10 bg-[#faf9ff]">
             <div className="w-full max-w-sm bg-white border border-gray-200 rounded-2xl shadow-sm p-8">
-                <h2 className="text-2xl font-bold text-slate-900 text-center">
+                <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 text-center">
                     Log in to your account
                 </h2>
 
-                <p className="mt-1 text-sm text-gray-600 text-center">
+                <p className="mt-2 text-sm text-gray-600 text-center">
                     Welcome back to the civic action network.
                 </p>
 
@@ -104,7 +104,7 @@ const LogInPage = () => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-emerald-700 hover:bg-emerald-800 disabled:opacity-50 text-white py-2.5 rounded-lg text-sm font-semibold"
+                        className="w-full rounded-lg bg-emerald-700 px-6 py-3 font-semibold text-white shadow-sm transition duration-200 hover:bg-emerald-800 disabled:opacity-50"
                     >
                         {loading ? "Logging in..." : "Log in"}
                     </button>
@@ -112,7 +112,7 @@ const LogInPage = () => {
                     <button
                         type="button"
                         onClick={handleGoogleLogin}
-                        className="w-full border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 py-2.5 rounded-lg text-sm font-semibold"
+                        className="w-full rounded-lg border border-gray-300 bg-white px-6 py-3 font-semibold text-gray-700 shadow-sm transition duration-200 hover:bg-gray-50"
                     >
                         Continue with Google
                     </button>

@@ -37,7 +37,7 @@ const FeatureSection = () => {
                     <p className="text-xs font-bold tracking-widest uppercase text-teal-700">
                         Transparent Civic Infrastructure
                     </p>
-                    <h2 className="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight text-slate-800">
+                    <h2 className="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">
                         Why KindredPulse Works
                     </h2>
                     <p className="mt-4 text-sm md:text-base text-gray-600 max-w-2xl mx-auto">

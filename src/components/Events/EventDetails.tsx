@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   HandHeart,
   MapPin,
@@ -11,7 +10,6 @@ import {
   Clock,
   Tag,
   Users,
-  Loader2,
 } from "lucide-react";
 import { toast } from "react-toastify";
 import { authClient } from "@/lib/auth-client";
@@ -21,8 +19,6 @@ import { getTokenFromClient } from "@/lib/getTokenFromClient";
 import Loader from "../Spinner/Loader";
 
 const EventDetails = ({ event }: { event: Event }) => {
-  const router = useRouter();
-
   const [joining, setJoining] = useState(false);
 
   const { data: session, isPending } = authClient.useSession();
@@ -111,7 +107,7 @@ const EventDetails = ({ event }: { event: Event }) => {
               {event.eventType}
             </span>
 
-            <h1 className="mt-4 text-3xl font-bold leading-tight text-slate-900 dark:text-white sm:text-4xl">
+            <h1 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-4xl">
               {event.title}
             </h1>
           </div>
@@ -221,7 +217,7 @@ const EventDetails = ({ event }: { event: Event }) => {
             <button
               onClick={handleJoinEvent}
               disabled={joining || isPending}
-              className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 py-3.5 font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-60"
+              className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-700 px-6 py-3.5 font-semibold text-white shadow-sm transition duration-200 hover:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {joining ? (
                 <>

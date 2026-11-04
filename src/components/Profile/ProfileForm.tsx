@@ -169,7 +169,7 @@ export function ProfileForm({ user }: ProfileFormProps) {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="inline-flex w-fit cursor-pointer items-center justify-center rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-700">
+                <label className="inline-flex w-fit cursor-pointer items-center justify-center rounded-lg bg-emerald-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-emerald-800">
                   <input
                     type="file"
                     accept="image/png,image/jpeg,image/webp"

@@ -49,15 +49,15 @@ const ImpactStats = () => {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-8">
 
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-700 mb-2">
+            <p className="text-xs font-bold uppercase tracking-widest text-teal-700 mb-2">
               Our Collective Impact
             </p>
 
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-900">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">
               Small Actions, Lasting Change
             </h2>
 
-            <p className="mt-2 text-sm text-slate-500 max-w-xl">
+            <p className="mt-3 text-sm md:text-base text-gray-600 max-w-xl">
               Every contribution creates a measurable difference in our
               communities.
             </p>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { HandHeart, X } from 'lucide-react';
+import { HandHeart } from 'lucide-react';
 import Link from 'next/link';
 
 
@@ -10,14 +10,19 @@ const GithubMark = () => (
     </svg>
 );
 
+const XMark = () => (
+    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden="true">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+);
+
 const columns = [
     {
         heading: 'Community',
         links: [
             { label: 'Upcoming Events', href: '/upcoming-events' },
-            { label: 'How It Works', href: '/how-it-works' },
-            { label: 'Impact Stories', href: '/impact-stories' },
-            { label: 'SDG Alignment', href: '/sdg-alignment' },
+            { label: 'Joined Events', href: '/joined-events' },
+            { label: 'Manage Events', href: '/manage-events' },
         ],
     },
     {
@@ -25,14 +30,7 @@ const columns = [
         links: [
             { label: 'Create Event', href: '/create-event' },
             { label: 'Volunteer Login', href: '/login' },
-            { label: 'Organizer Handbook', href: '/organizer-handbook' },
-        ],
-    },
-    {
-        heading: 'Governance',
-        links: [
-            { label: 'Privacy Policy', href: '/privacy-policy' },
-            { label: 'Terms of Service', href: '/terms-of-service' },
+            { label: 'Join Now', href: '/signup' },
         ],
     },
 ];
@@ -40,16 +38,24 @@ const columns = [
 const Footer = () => {
     return (
         <footer className="border-t border-gray-200 bg-white">
-            <div className="max-w-8xl mx-auto px-6 py-12 grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_0.9fr]">
+            <div className="max-w-8xl mx-auto px-6 py-12 grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
                 {/* Brand */}
                 <div>
                     <div className="flex items-center gap-2.5">
-                        <span className="bg-emerald-700 text-white w-10 h-10 rounded-xl flex items-center justify-center">
+                        <span className="bg-emerald-700 text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-md">
                             <HandHeart size={22} />
                         </span>
-                        <span className="text-2xl font-bold text-emerald-800 tracking-tight">
-                            KindredPulse
-                        </span>
+                        <div className="leading-tight">
+                            <div className="flex items-center gap-1">
+                                <span className="text-2xl font-bold tracking-tight text-emerald-800">
+                                    KindredPulse
+                                </span>
+                                <span className="text-2xl text-orange-400">.</span>
+                            </div>
+                            <p className="text-[10px] font-semibold tracking-wider text-gray-700">
+                                CIVIC ACTION NETWORK
+                            </p>
+                        </div>
                     </div>
 
                     <p className="mt-4 text-sm text-gray-600 max-w-xs leading-relaxed">
@@ -64,9 +70,9 @@ const Footer = () => {
                             target="_blank"
                             rel="noreferrer"
                             className="w-9 h-9 border border-gray-300 rounded-lg flex items-center justify-center text-slate-900 hover:bg-gray-50 transition"
-                            aria-label="X (Twitter)"
+                            aria-label="X"
                         >
-                            <X size={16} />
+                            <XMark />
                         </a>
                         <a
                             href="https://github.com"

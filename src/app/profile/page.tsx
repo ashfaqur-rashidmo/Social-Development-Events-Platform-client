@@ -53,7 +53,7 @@ export default function ProfilePage() {
 
           <Link
             href="/login"
-            className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-700"
+            className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 px-6 py-3.5 font-semibold text-white shadow-sm transition duration-200 hover:bg-emerald-800"
           >
             Go to Login
             <ArrowRight size={16} />
@@ -83,11 +83,11 @@ export default function ProfilePage() {
             KindredPulse
           </div>
 
-          <h1 className="mt-3 text-3xl font-bold tracking-tight text-gray-900">
+          <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
             My Profile
           </h1>
 
-          <p className="mt-2 text-sm text-gray-500 sm:text-base">
+          <p className="mt-2 text-sm text-gray-500 sm:text-base dark:text-slate-400">
             Manage your personal information and account details.
           </p>
         </div>
@@ -141,7 +141,7 @@ export default function ProfilePage() {
               {/* Edit Profile Button */}
               <Link
                 href="#profile-settings"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-700"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 px-6 py-3.5 font-semibold text-white shadow-sm transition duration-200 hover:bg-emerald-800"
               >
                 <Pencil size={16} />
                 Edit Profile

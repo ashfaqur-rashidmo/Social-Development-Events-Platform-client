@@ -107,8 +107,6 @@ export default function EditEventsDetails({
         throw new Error("Authentication token not found. Please log in again.");
       }
 
-      const { _id, ...updatedData } = form;
-
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_URL}/events/${event._id}`,
         {
@@ -118,7 +116,8 @@ export default function EditEventsDetails({
             authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
-            ...updatedData,
+            ...form,
+            _id: undefined,
             eventDate: selectedDate.toISOString(),
           }),
         }
@@ -150,7 +149,7 @@ export default function EditEventsDetails({
     <Modal isOpen={open} onOpenChange={setOpen}>
       <Button
         type="button"
-        variant="bordered"
+        variant="outline"
         onPress={() => setOpen(true)}
       >
         <Pencil size={16} />
@@ -195,6 +194,7 @@ export default function EditEventsDetails({
                   <Field label="Event Type">
                     <Select
                       selectedKey={form.eventType}
+                      placeholder="Select event type"
                       onSelectionChange={(value) => {
                         if (value !== null) {
                           setField("eventType", String(value));
@@ -202,7 +202,7 @@ export default function EditEventsDetails({
                       }}
                     >
                       <Select.Trigger>
-                        <Select.Value placeholder="Select event type" />
+                        <Select.Value />
                         <Select.Indicator />
                       </Select.Trigger>
 

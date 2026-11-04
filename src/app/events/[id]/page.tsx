@@ -30,7 +30,7 @@ const EventDetailsPage = async ({
   const eventData: Event = await response.json();
 
   return (
-    <main className="min-h-screen bg-slate-50 px-4 py-10 dark:bg-slate-950">
+    <main className="min-h-screen bg-slate-50 px-4 py-16 sm:px-6 dark:bg-slate-950">
       <EventDetails event={eventData} />
     </main>
   );

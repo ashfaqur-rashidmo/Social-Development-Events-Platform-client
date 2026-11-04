@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Event } from "@/lib/type";
 import Image from "next/image";
+import { CalendarDays, MapPin } from "lucide-react";
 import Loader from "@/components/Spinner/Loader";
 import EventFilters from "@/components/Events/EventFilters";
 
@@ -93,14 +94,14 @@ const clearFilters = () => {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 px-4 py-16 dark:bg-slate-950">
+    <main className="min-h-screen bg-slate-50 px-4 py-16 sm:px-6 dark:bg-slate-950">
       <div className="mx-auto max-w-7xl">
         
         <div className="mb-10 text-center">
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-white md:text-4xl">
+          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             Upcoming Events
           </h1>
-          <p className="mt-3 text-slate-600 dark:text-slate-400">
+          <p className="mt-3 text-sm md:text-base text-slate-600 dark:text-slate-400">
             Discover events and make a positive impact in your community.
           </p>
         </div>
@@ -129,20 +130,20 @@ const clearFilters = () => {
             {filteredEvents.map((event) => (
               <div
                 key={event._id}
-                className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
+                className="flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
               >
                
                 <Image
                     width={400}
-                    height={200}
+                    height={208}
                   src={event.thumbnailUrl}
                   alt={event.title}
                   className="h-52 w-full object-cover"
                 />
 
                 {/* Event Information */}
-                <div className="p-5">
-                  <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">
+                <div className="flex flex-1 flex-col p-5">
+                  <span className="w-fit rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">
                     {event.eventType}
                   </span>
 
@@ -150,12 +151,13 @@ const clearFilters = () => {
                     {event.title}
                   </h2>
 
-                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-                    📍 {event.location}
+                  <p className="mt-3 flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                    <MapPin size={16} className="shrink-0 text-emerald-600" />
+                    {event.location}
                   </p>
 
-                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-                    📅{" "}
+                  <p className="mt-2 flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                    <CalendarDays size={16} className="shrink-0 text-emerald-600" />
                     {new Date(event.eventDate).toLocaleDateString(
                       "en-GB",
                       {
@@ -168,7 +170,7 @@ const clearFilters = () => {
 
                   <Link
                     href={`/events/${event._id}`}
-                    className="mt-5 block rounded-lg bg-emerald-600 px-4 py-3 text-center font-semibold text-white transition hover:bg-emerald-700"
+                    className="mt-auto block w-full rounded-lg bg-emerald-700 px-6 py-3.5 text-center font-semibold text-white shadow-sm transition duration-200 hover:bg-emerald-800"
                   >
                     View Event
                   </Link>
