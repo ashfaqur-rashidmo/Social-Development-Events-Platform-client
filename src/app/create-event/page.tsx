@@ -7,6 +7,7 @@ import { ChevronDown } from "lucide-react";
 import { toast } from "react-toastify";
 import { authClient } from "@/lib/auth-client";
 import { getTokenFromClient } from "@/lib/getTokenFromClient";
+import { ButtonLoading } from "@/components/ButtonLoading";
 
 
 
@@ -231,13 +232,16 @@ const user = session?.user;
             disabled={isLoading}
             className="w-full rounded-lg bg-emerald-700 px-4 py-3 text-sm font-semibold text-white transition hover:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {isLoading ? "Creating Event..." : "Create Event"}
+           <ButtonLoading isLoading={isLoading} loadingText="Creating Event...">
+              Create Event
+            </ButtonLoading>
           </button>
-
         </form>
       </div>
     </main>
   );
-};
+}
+        
+
 
 export default CreateEventPage;

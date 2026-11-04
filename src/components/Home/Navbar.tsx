@@ -20,6 +20,7 @@ import { Avatar, Popover } from "@heroui/react";
 import { toast } from "react-toastify";
 import { Sun, Moon, Check } from "lucide-react";
 import { useTheme } from "next-themes";
+import Loader from "../Spinner/Loader";
 
 const Navbar = () => {
   const router = useRouter();
@@ -173,7 +174,9 @@ const { theme, setTheme } = useTheme();
 
           {/* Authentication */}
           {isPending ? (
-            <div className="h-9 w-24 animate-pulse rounded-lg bg-slate-100" />
+             <div className="flex h-9 w-24 items-center justify-center">
+              <Loader />
+           </div>
           ) : user ? (
             <>
               {/* User Profile Dropdown */}
@@ -214,7 +217,7 @@ const { theme, setTheme } = useTheme();
                           alt={user.name || "User"}
                         />
                         <Avatar.Fallback>
-                          {user.name?.charAt(0).toUpperCase() || "U"}
+                          {user.name?.charAt(0).toUpperCase()}
                         </Avatar.Fallback>
                       </Avatar>
 

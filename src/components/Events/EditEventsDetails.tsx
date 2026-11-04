@@ -18,6 +18,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import type { Event } from "@/lib/type";
 import { getTokenFromClient } from "@/lib/getTokenFromClient";
+import { ButtonLoading } from "../ButtonLoading";
 
 const EVENT_TYPES = [
   "Cleanup",
@@ -285,8 +286,15 @@ export default function EditEventsDetails({
                 form="edit-event-form"
                 isDisabled={isSubmitting}
               >
-                <Save size={16} />
-                {isSubmitting ? "Saving..." : "Save Changes"}
+                <ButtonLoading
+                  isLoading={isSubmitting}
+                  loadingText="Saving..."
+                >
+                  <>
+                    <Save size={16} />
+                    Save Changes
+                  </>
+                </ButtonLoading>
               </Button>
             </Modal.Footer>
           </Modal.Dialog>

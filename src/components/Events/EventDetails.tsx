@@ -19,6 +19,7 @@ import { authClient } from "@/lib/auth-client";
 import type { Event } from "@/lib/type";
 import Image from "next/image";
 import { getTokenFromClient } from "@/lib/getTokenFromClient";
+import Loader from "../Spinner/Loader";
 
 const EventDetails = ({ event }: { event: Event }) => {
   const router = useRouter();
@@ -225,7 +226,7 @@ const EventDetails = ({ event }: { event: Event }) => {
             >
               {joining ? (
                 <>
-                  <Loader2 size={20} className="animate-spin" />
+                  <Loader />
                   Joining...
                 </>
               ) : (

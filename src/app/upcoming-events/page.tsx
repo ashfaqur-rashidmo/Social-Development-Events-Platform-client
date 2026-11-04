@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Event } from "@/lib/type";
 import Image from "next/image";
+import Loader from "@/components/Spinner/Loader";
 
 
 const UpcomingEventsPage = () => {
@@ -43,8 +44,8 @@ const UpcomingEventsPage = () => {
 
   if (loading) {
     return (
-      <div className="py-20 text-center">
-        Loading upcoming events...
+      <div className="flex items-center justify-center py-20">
+        <Loader />
       </div>
     );
   }

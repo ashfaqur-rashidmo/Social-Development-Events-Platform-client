@@ -7,6 +7,7 @@ import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import type { Event } from "@/lib/type";
 import { getTokenFromClient } from "@/lib/getTokenFromClient";
+import Loader from "@/components/Spinner/Loader";
 
 const JoinedEvents = () => {
   const { data: session, isPending } = authClient.useSession();
@@ -64,8 +65,8 @@ const JoinedEvents = () => {
 
   if (isPending) {
     return (
-      <p className="py-10 text-center">
-        Loading joined events...
+      <p className="flex h-9 w-24 items-center justify-center">
+       <Loader />
       </p>
     );
   }

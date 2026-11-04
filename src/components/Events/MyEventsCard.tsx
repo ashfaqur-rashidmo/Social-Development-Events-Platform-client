@@ -4,9 +4,9 @@ import Image from "next/image";
 import { CalendarDays, MapPin, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import type { Event } from "@/lib/type";
-import { Button } from "@heroui/react";
+
 import  EditEventsDetails  from "./EditEventsDetails";
-import { toast } from "react-toastify";
+
 import DeletingUserEvents from "./DeletingUserEvents";
 
 interface MyEventsCardProps {
