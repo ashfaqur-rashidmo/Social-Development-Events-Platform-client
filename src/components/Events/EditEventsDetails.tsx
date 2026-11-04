@@ -98,11 +98,17 @@ export default function EditEventsDetails({
 
     setIsSubmitting(true);
 
-    const { _id, ...updatedData } = form;
-
-    const token = await getTokenFromClient();
+    
 
     try {
+       const token = await getTokenFromClient();
+
+      if (!token) {
+        throw new Error("Authentication token not found. Please log in again.");
+      }
+
+      const { _id, ...updatedData } = form;
+
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_URL}/events/${event._id}`,
         {

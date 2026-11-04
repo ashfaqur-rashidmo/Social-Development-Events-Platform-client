@@ -13,6 +13,7 @@ import {
   Users,
   LogOut,
   ChevronDown,
+  UserRound,
 } from "lucide-react";
 
 import { authClient } from "@/lib/auth-client";
@@ -232,6 +233,14 @@ const { theme, setTheme } = useTheme();
                     </div>
 
                     <div className="flex flex-col gap-1 py-3">
+                      <Link
+                       href="/profile"
+                       className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700"
+  >
+                      <UserRound size={17} />
+                       Profile
+                      </Link>
+
                       <Link
                         href="/create-event"
                         className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700"
