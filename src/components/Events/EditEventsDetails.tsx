@@ -17,6 +17,7 @@ import { Pencil, Save, X } from "lucide-react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import type { Event } from "@/lib/type";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 
 const EVENT_TYPES = [
   "Cleanup",
@@ -98,6 +99,8 @@ export default function EditEventsDetails({
 
     const { _id, ...updatedData } = form;
 
+    const token = await getTokenFromClient();
+
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_URL}/events/${event._id}`,
@@ -105,6 +108,7 @@ export default function EditEventsDetails({
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
             ...updatedData,

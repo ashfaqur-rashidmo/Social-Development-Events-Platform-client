@@ -18,6 +18,7 @@ import { toast } from "react-toastify";
 import { authClient } from "@/lib/auth-client";
 import type { Event } from "@/lib/type";
 import Image from "next/image";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 
 const EventDetails = ({ event }: { event: Event }) => {
   const router = useRouter();
@@ -38,6 +39,8 @@ const EventDetails = ({ event }: { event: Event }) => {
 
     setJoining(true);
 
+    const token = await getTokenFromClient();
+
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_URL}/joined-events`,
@@ -45,6 +48,7 @@ const EventDetails = ({ event }: { event: Event }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
             eventId: event._id,

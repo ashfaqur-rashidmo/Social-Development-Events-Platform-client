@@ -10,6 +10,8 @@ const EventDetailsPage = async ({
 }) => {
   const { id } = await params;
 
+  
+
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/events/${id}`,
     {

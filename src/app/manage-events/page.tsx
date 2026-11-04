@@ -3,6 +3,8 @@ import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import type { Event } from "@/lib/type";
 import MyEventsCard from "@/components/Events/MyEventsCard";
+import { getTokenFromServer } from "@/lib/getTokenFromServer";
+
 
 const ManageEventsPage = async () => {
   const session = await auth.api.getSession({
@@ -21,11 +23,17 @@ const ManageEventsPage = async () => {
 
   let events: Event[] = [];
 
+  const token = await getTokenFromServer();
+
   try {
     const res = await fetch(
       `http://localhost:5000/user-events/${(user.email)}`,
       {
         method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         cache: "no-store",
       }
     );

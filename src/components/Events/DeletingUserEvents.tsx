@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { AlertDialog, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import type { Event } from "@/lib/type";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 
 interface DeletingUserEventsProps {
   event: Event;
@@ -28,11 +29,17 @@ const DeletingUserEvents = ({ event }: DeletingUserEventsProps) => {
 
     setIsDeleting(true);
 
+    const token = await getTokenFromClient();
+
     try {
       const response = await fetch(
         `${backendUrl}/events/${event._id}`,
         {
           method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
         }
       );
 

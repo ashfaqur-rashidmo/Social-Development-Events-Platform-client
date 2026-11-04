@@ -6,6 +6,10 @@ import { useRouter } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { toast } from "react-toastify";
 import { authClient } from "@/lib/auth-client";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
+
+
+
 
 const EVENT_TYPES = [
   "Donation",
@@ -60,11 +64,15 @@ const user = session?.user;
 
     setIsLoading(true);
 
+    const token = await getTokenFromClient();
+    
     try {
       const response = await fetch("http://localhost:5000/events", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+          
         },
         body: JSON.stringify({
           ...event,
