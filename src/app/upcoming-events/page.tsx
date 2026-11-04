@@ -6,12 +6,15 @@ import Link from "next/link";
 import { Event } from "@/lib/type";
 import Image from "next/image";
 import Loader from "@/components/Spinner/Loader";
+import EventFilters from "@/components/Events/EventFilters";
 
 
 const UpcomingEventsPage = () => {
-  const [events, setEvents] = useState<[Event]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const getUpcomingEvents = async () => {
@@ -42,6 +45,37 @@ const UpcomingEventsPage = () => {
     (event) => new Date(event.eventDate) > new Date()
   );
 
+
+  // Get unique event categories
+const categories = [
+  "All",
+  ...new Set(
+    upcomingEvents.map((event) => event.eventType).filter(Boolean)
+  ),
+];
+
+
+// Filter events by category and search
+const filteredEvents = upcomingEvents.filter((event) => {
+  const matchesCategory =
+    selectedCategory === "All" ||
+    event.eventType?.toLowerCase() === selectedCategory.toLowerCase();
+
+  const search = searchQuery.toLowerCase().trim();
+
+  const matchesSearch =
+    event.title.toLowerCase().includes(search) ||
+    event.location.toLowerCase().includes(search);
+
+  return matchesCategory && matchesSearch;
+});
+
+// Clear filters
+const clearFilters = () => {
+  setSelectedCategory("All");
+  setSearchQuery("");
+};
+
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
@@ -71,14 +105,28 @@ const UpcomingEventsPage = () => {
           </p>
         </div>
 
+        <EventFilters
+  categories={categories}
+  selectedCategory={selectedCategory}
+  setSelectedCategory={setSelectedCategory}
+  searchQuery={searchQuery}
+  setSearchQuery={setSearchQuery}
+  clearFilters={clearFilters}
+/>
+
+{/* Results Count */}
+<p className="mb-6 text-sm text-slate-500 dark:text-slate-400">
+  Showing {filteredEvents.length} of {upcomingEvents.length} events
+</p>
+
         {/* Event Grid */}
-        {upcomingEvents.length === 0 ? (
+        {filteredEvents.length === 0 ? (
           <p className="py-16 text-center text-slate-500">
             No upcoming events available right now.
           </p>
         ) : (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {upcomingEvents.map((event) => (
+            {filteredEvents.map((event) => (
               <div
                 key={event._id}
                 className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
