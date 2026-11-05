@@ -2,7 +2,7 @@
 
 **KindredPulse** is a community-driven social development events platform where users can create, join, and track grassroots civic service events in their local area — from winter clothes distribution in Mirpur 10, Dhaka, to blanket drives in Mohammadpur and community cleanups across the city.
 
-> 🔗 **Live Site:** `https://social-development-client-ivory.vercel.app` *(update this URL after deploying to Vercel)*  
+> 🔗 **Live Site:** `https://social-development-client-ivory.vercel.app`  
 > 🔗 **Server Repository:** `https://github.com/ashfaqur-rashidmo/Social-Development-Events-Platform-server`
 
 ## Features
