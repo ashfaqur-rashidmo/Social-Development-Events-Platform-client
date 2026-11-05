@@ -11,7 +11,6 @@ import { ButtonLoading } from "@/components/ButtonLoading";
 
 
 
-
 const EVENT_TYPES = [
   "Donation",
   "Food Drive",
@@ -75,7 +74,7 @@ const user = session?.user;
     const token = await getTokenFromClient();
     
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_UR}/events`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/events`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
