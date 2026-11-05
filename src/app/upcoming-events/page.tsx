@@ -6,8 +6,8 @@ import Link from "next/link";
 import { Event } from "@/lib/type";
 import Image from "next/image";
 import { CalendarDays, MapPin } from "lucide-react";
-import Loader from "@/components/Spinner/Loader";
 import EventFilters from "@/components/Events/EventFilters";
+import EventSkeleton from "@/components/Events/EventSkeleton";
 
 
 const UpcomingEventsPage = () => {
@@ -79,8 +79,22 @@ const clearFilters = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-20">
-        <Loader />
+      <div className="min-h-screen bg-slate-50 px-4 py-16 sm:px-6 dark:bg-slate-950">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-10 text-center">
+            <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+              Upcoming Events
+            </h1>
+            <p className="mt-3 text-sm md:text-base text-slate-600 dark:text-slate-400">
+              Discover events and make a positive impact in your community.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[1, 2, 3, 4, 5, 6].map((_, i) => (
+              <EventSkeleton key={i} />
+            ))}
+          </div>
+        </div>
       </div>
     );
   }

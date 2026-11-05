@@ -29,7 +29,7 @@ const JoinedEvents = async () => {
         const token = await getTokenFromServer();
 
         const response = await fetch(
-            `${process.env.NEXT_PUBLIC_URL}/joined-events/${encodeURIComponent(session.user.email)}`,
+            `${process.env.NEXT_PUBLIC_URL}/joined-events/${(session.user.email)}`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
