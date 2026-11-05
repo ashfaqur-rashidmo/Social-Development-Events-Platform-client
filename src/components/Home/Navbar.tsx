@@ -77,13 +77,13 @@ const { theme, setTheme } = useTheme();
 
           <div className="leading-tight">
             <div className="flex items-center gap-1">
-              <h1 className="text-2xl font-bold tracking-tight text-emerald-800">
+              <h1 className="text-2xl font-bold tracking-tight text-emerald-800 dark:text-emerald-400">
                 KindredPulse
               </h1>
               <span className="text-2xl text-orange-400">.</span>
             </div>
 
-            <p className="text-[10px] font-semibold tracking-wider text-gray-700">
+            <p className="text-[10px] font-semibold tracking-wider text-gray-700 dark:text-gray-300">
               CIVIC ACTION NETWORK
             </p>
           </div>
@@ -98,10 +98,10 @@ const { theme, setTheme } = useTheme();
               <Link
                 key={link.href}
                 href={link.href}
-                className={`flex h-full items-center border-b-2 text-sm font-semibold transition ${
+                className={`flex h-full items-center border-b-2 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 ${
                   isActive
-                    ? "border-teal-700 text-teal-700"
-                    : "border-transparent text-gray-700 hover:border-teal-700 hover:text-teal-700"
+                    ? "border-teal-700 text-teal-700 dark:border-teal-400 dark:text-teal-400"
+                    : "border-transparent text-gray-700 hover:border-teal-700 hover:text-teal-700 dark:text-slate-300 dark:hover:border-teal-400 dark:hover:text-teal-400"
                 }`}
               >
                 {link.name}
@@ -134,10 +134,10 @@ const { theme, setTheme } = useTheme();
                       <Link
                         key={link.href}
                         href={link.href}
-                        className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
+                        className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 ${
                           pathname === link.href
-                            ? "bg-emerald-50 text-emerald-700"
-                            : "text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"
+                            ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
+                            : "text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-emerald-300"
                         }`}
                       >
                         <CalendarDays size={17} />
@@ -149,7 +149,7 @@ const { theme, setTheme } = useTheme();
                       <>
                         <Link
                           href="/profile"
-                          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700"
+                          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-emerald-300"
                         >
                           <UserRound size={17} />
                           Profile
@@ -157,7 +157,7 @@ const { theme, setTheme } = useTheme();
 
                         <Link
                           href="/create-event"
-                          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700"
+                          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-emerald-300"
                         >
                           <PlusCircle size={17} />
                           Create Event
@@ -165,7 +165,7 @@ const { theme, setTheme } = useTheme();
 
                         <Link
                           href="/manage-events"
-                          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700"
+                          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-emerald-300"
                         >
                           <CalendarDays size={17} />
                           Manage Events
@@ -173,7 +173,7 @@ const { theme, setTheme } = useTheme();
 
                         <Link
                           href="/joined-events"
-                          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700"
+                          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-emerald-300"
                         >
                           <Users size={17} />
                           Joined Events
@@ -182,7 +182,7 @@ const { theme, setTheme } = useTheme();
                         <button
                           type="button"
                           onClick={handleSignOut}
-                          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold text-red-600 transition hover:bg-red-50"
+                          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold text-red-600 transition hover:bg-red-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-red-400 dark:hover:bg-red-950"
                         >
                           <LogOut size={17} />
                           Log Out
@@ -191,7 +191,7 @@ const { theme, setTheme } = useTheme();
                     ) : (
                       <Link
                         href="/login"
-                        className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700"
+                        className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-emerald-300"
                       >
                         <LogIn size={17} />
                         Log In
@@ -230,7 +230,7 @@ const { theme, setTheme } = useTheme();
         <button
           type="button"
           onClick={() => setTheme("light")}
-          className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
+          className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-slate-200 dark:hover:bg-slate-700"
         >
           <Sun size={17} />
           Light
@@ -242,7 +242,7 @@ const { theme, setTheme } = useTheme();
         <button
           type="button"
           onClick={() => setTheme("dark")}
-          className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
+          className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-slate-200 dark:hover:bg-slate-700"
         >
           <Moon size={17} />
           Dark
@@ -260,7 +260,7 @@ const { theme, setTheme } = useTheme();
           <button
             type="button"
             aria-label="Notifications"
-            className="relative flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-emerald-700"
+            className="relative flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-emerald-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-emerald-400"
           >
             <Bell size={19} />
             <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full border border-white bg-red-500" />
@@ -279,7 +279,7 @@ const { theme, setTheme } = useTheme();
                   <button
                     type="button"
                     aria-label="Open user profile"
-                    className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white p-1.5 pr-2.5 transition hover:border-emerald-300 hover:bg-emerald-50"
+                    className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white p-1.5 pr-2.5 transition hover:border-emerald-300 hover:bg-emerald-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-emerald-500 dark:hover:bg-emerald-950"
                   >
                     <Avatar size="sm">
                       <Avatar.Image
@@ -291,7 +291,7 @@ const { theme, setTheme } = useTheme();
                       </Avatar.Fallback>
                     </Avatar>
 
-                    <span className="hidden max-w-24 truncate text-sm font-semibold text-slate-700 sm:block">
+                    <span className="hidden max-w-24 truncate text-sm font-semibold text-slate-700 sm:block dark:text-slate-200">
                       {user.name}
                     </span>
 
@@ -304,7 +304,7 @@ const { theme, setTheme } = useTheme();
 
                 <Popover.Content className="w-70" placement="bottom end">
                   <Popover.Dialog>
-                    <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
+                    <div className="flex items-center gap-3 border-b border-slate-100 pb-4 dark:border-slate-700">
                       <Avatar size="lg">
                         <Avatar.Image
                           src={user.image || undefined}
@@ -316,10 +316,10 @@ const { theme, setTheme } = useTheme();
                       </Avatar>
 
                       <div className="min-w-0">
-                        <p className="truncate text-sm font-bold text-slate-900">
+                        <p className="truncate text-sm font-bold text-slate-900 dark:text-white">
                           {user.name}
                         </p>
-                        <p className="truncate text-xs text-slate-500">
+                        <p className="truncate text-xs text-slate-500 dark:text-slate-400">
                           {user.email}
                         </p>
                       </div>
@@ -328,7 +328,7 @@ const { theme, setTheme } = useTheme();
                     <div className="flex flex-col gap-1 py-3">
                       <Link
                        href="/profile"
-                       className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700"
+                       className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-emerald-300"
   >
                       <UserRound size={17} />
                        Profile
@@ -336,7 +336,7 @@ const { theme, setTheme } = useTheme();
 
                       <Link
                         href="/create-event"
-                        className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700"
+                        className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-emerald-300"
                       >
                         <PlusCircle size={17} />
                         Create Event
@@ -344,7 +344,7 @@ const { theme, setTheme } = useTheme();
 
                       <Link
                         href="/manage-events"
-                        className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700"
+                        className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-emerald-300"
                       >
                         <CalendarDays size={17} />
                         Manage Events
@@ -352,18 +352,18 @@ const { theme, setTheme } = useTheme();
 
                       <Link
                         href="/joined-events"
-                        className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700"
+                        className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-emerald-300"
                       >
                         <Users size={17} />
                         Joined Events
                       </Link>
                     </div>
 
-                    <div className="border-t border-slate-100 pt-3">
+                    <div className="border-t border-slate-100 pt-3 dark:border-slate-700">
                       <button
                         type="button"
                         onClick={handleSignOut}
-                        className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold text-red-600 transition hover:bg-red-50"
+                        className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold text-red-600 transition hover:bg-red-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-red-400 dark:hover:bg-red-950"
                       >
                         <LogOut size={17} />
                         Log Out
@@ -385,7 +385,7 @@ const { theme, setTheme } = useTheme();
             <>
               <Link
                 href="/login"
-                className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-emerald-700"
+                className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-emerald-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-emerald-400"
               >
                 Log In
               </Link>

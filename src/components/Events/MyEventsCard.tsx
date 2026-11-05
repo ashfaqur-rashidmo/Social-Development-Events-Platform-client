@@ -68,19 +68,20 @@ const MyEventsCard = ({ events }: MyEventsCardProps) => {
             </div>
 
             {/* View Event */}
-            <div className="mt-auto pt-5">
-              <Link
-                href={`/events/${event._id}`}
-                className="flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-700 px-6 py-3.5 font-semibold text-white shadow-sm transition duration-200 hover:bg-emerald-800"
-              >
-                View Event
-                <ArrowUpRight size={16} />
-              </Link>
+            <div className="mt-auto pt-5 space-y-2">
+    <Link
+        href={`/events/${event._id}`}
+        className="flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-700 px-6 py-3.5 font-semibold text-white shadow-sm transition duration-200 hover:bg-emerald-800"
+    >
+        View Event
+        <ArrowUpRight size={16} />
+    </Link>
 
-              <EditEventsDetails event={event}/>
-
-              <DeletingUserEvents event={event}/>
-            </div>
+    <div className="grid grid-cols-2 gap-44">
+        <EditEventsDetails event={event} />
+        <DeletingUserEvents event={event} />
+    </div>
+</div>
           </div>
         </div>
       ))}
