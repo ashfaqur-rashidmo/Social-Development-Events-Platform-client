@@ -50,18 +50,7 @@ npm run dev
 
 The app runs on `http://localhost:3000`.
 
-### Required Environment Variables (`frontend/.env`)
 
-```env
-BETTER_AUTH_SECRET=your_better_auth_secret
-BETTER_AUTH_URL=http://localhost:3000
-MONGODB_URI=your_mongodb_connection_string
-BETTER_AUTH_GOOGLE_CLIENT_ID=your_google_client_id
-BETTER_AUTH_GOOGLE_CLIENT_SECRET=your_google_client_secret
-NEXT_PUBLIC_URL=http://localhost:5000
-NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET=your_upload_preset
-```
 
 ### Backend Setup
 
