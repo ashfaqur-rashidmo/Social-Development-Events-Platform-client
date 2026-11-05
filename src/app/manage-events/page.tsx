@@ -27,7 +27,7 @@ const ManageEventsPage = async () => {
 
   try {
     const res = await fetch(
-      `http://localhost:5000/user-events/${(user.email)}`,
+      `${process.env.NEXT_PUBLIC_URL}/user-events/${(user.email)}`,
       {
         method: "GET",
         headers: {

@@ -75,7 +75,7 @@ const user = session?.user;
     const token = await getTokenFromClient();
     
     try {
-      const response = await fetch("http://localhost:5000/events", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_UR}/events`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

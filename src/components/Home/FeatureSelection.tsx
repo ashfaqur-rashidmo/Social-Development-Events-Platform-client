@@ -1,3 +1,5 @@
+"use client";
+
 import { Archive, BadgeCheck, MapPin, MousePointerClick } from 'lucide-react';
 import React from 'react';
 

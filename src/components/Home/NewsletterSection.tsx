@@ -1,3 +1,5 @@
+"use client";
+
 import { HandHeart, Send, Siren } from 'lucide-react';
 import React from 'react';
 

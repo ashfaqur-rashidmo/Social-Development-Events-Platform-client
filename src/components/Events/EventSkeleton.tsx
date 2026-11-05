@@ -1,10 +1,5 @@
 import { Skeleton } from "@heroui/react";
 
-/**
- * Skeleton version of an event card.
- * Matches the real event-card layout (thumbnail, title, meta lines, action button)
- * so the page keeps its shape while data loads — no layout jump, no blank state.
- */
 export default function EventSkeleton() {
   return (
     <div className="flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
